@@ -1,0 +1,52 @@
+name:                frequency
+version:             0.1.0.0
+synopsis:            A library for dealing with frequencies (typically in the context of RF)
+-- description:         
+homepage:            https://github.com/CodeBlock/hertz
+license:             BSD2
+license-file:        LICENSE
+author:              Ricky Elrod
+maintainer:          ricky@elrod.me
+copyright:           (c) 2014 Ricky Elrod
+category:            Data
+build-type:          Custom
+-- extra-source-files:  
+cabal-version:       >=1.10
+
+library
+  exposed-modules:     Data.Frequency.Hertz
+                       Data.Frequency.Megahertz
+                       Data.Frequency.Meters
+  -- other-modules:       
+  other-extensions:    GeneralizedNewtypeDeriving
+  build-depends:       base >=4.7 && <4.8
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options: -Wall -threaded
+
+test-suite doctests
+  type: exitcode-stdio-1.0
+  main-is: doctests.hs
+  default-language: Haskell2010
+  build-depends:
+    base,
+    directory >= 1.2 && < 2,
+    doctest >= 0.9.1,
+    filepath >= 1.3 && < 2,
+    QuickCheck,
+    quickcheck-instances
+  ghc-options: -Wall -threaded
+  hs-source-dirs: tests
+
+
+Test-Suite quickcheck
+  type: exitcode-stdio-1.0
+  main-is: quickcheck.hs
+  default-language: Haskell2010
+  build-depends:
+    base,
+    frequency,
+    QuickCheck,
+    template-haskell
+  ghc-options: -Wall -threaded
+  hs-source-dirs: tests
